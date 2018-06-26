@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title
+
+
+</head>
+<script type ="text/javascript">
+    window.onload = function() {
+        const lis = document.querySelectorAll('li');
+
+        let translate = [
+          "Первый",
+          "Второй",
+          "Третий"
+        ];
+
+
+        translate.forEach(function(v) {
+          if (v === "Первый") lis[0].innerHTML += " = First";
+          if (v === "Второй") lis[1].innerHTML += " = Second";
+          if (v === "Третий") lis[2].innerHTML += " = Third";
+        });
+    };
+</script>
+<body>
+
+    <ol>
+        <li>Первый</li>
+        <li>Второй</li>
+        <li>Третий</li>
+    </ol>
+
+</body>
+</html>
