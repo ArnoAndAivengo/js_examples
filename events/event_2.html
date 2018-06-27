@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Event</h1>
+    <div>
+        <button>Click me!</button>
+    </div>
+    <script>{
+        document.querySelector('button')
+        .addEventListener(
+            'mousemove',
+            e => {
+                switch (e.target.nodeName) {
+                    case 'H1' :
+                    case 'BUTTON' :
+                }
+                e.target.textContent = `x: ${e.clientX}, y: ${e.clientY}`;
+            }
+        );
+    }</script>
+</body>
+</html>

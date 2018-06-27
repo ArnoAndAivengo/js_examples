@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Создание событий</title>
+
+    <style>
+        body {display: flex;}
+        #writer {width: 50%; height: 100px; background-color: gold; cursor: pointer;}
+        #reader {width: 50%; height: 100px; background-color: red;}
+    </style>
+
+</head>
+<body>
+
+    <div id="writer" title="♥️"><h2>Отправитель события</h2></div>
+    <div id="reader" title="⭐️"><h2>Получатель события</h2></div>
+
+    <script>{
+        document.querySelector('#reader').addEventListener('note', e => e.target.textContent += e.target.title);
+        document.querySelector('#writer').addEventListener('click', () => document.querySelector('#reader').dispatchEvent(new CustomEvent('note')));
+    }</script>
+</body>
+</html>
