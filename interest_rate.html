@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Array_1</title>
+</head>
+<body>
+    <div class="wrapper">
+        <button onclick="percent()">Найти процент</button>
+    </div>
+
+    <script type="text/javascript">
+        function percent() {
+            // объявляем переменные
+            var
+                rub = ' руб.',
+                number = prompt('Введите сумму в рублях'),
+                present = prompt('Введите процент от ' + number + rub),
+                result = number * present / 100;
+
+            //делаем рассчет
+            number += rub;
+            present += '%';
+            result = ' от ' + number + ' ' + present + ' составляет = ' + result + rub;
+
+            alert(result);
+        }
+
+    </script>
+</body>
+</html>
