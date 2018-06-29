@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        const person = ['one', 'two', 'three']
+        person.forEach((x, i) => document.write(`${i} ${x}`));
+
+        person.join(' ');
+
+        person.reduce((x, y) => x +  y);
+
+        const num = Array.from( {length: 10}, (v, i) => ++i);
+        nums.reduce((x, y) => x + y);
+        nums.filter(x => !(x%2));
+        nums.filter(x => !(x%2)).reduce((x, y) => x + y);
+
+        const randNums = Array.from({length: 10}, (v, i) =>
+        Math.ceil(Math.random()*100));
+
+        randNums.sort();
+        randNums.sort((x, y) => x -y);
+
+
+
+    </script>
+
+</body>
+</html>
