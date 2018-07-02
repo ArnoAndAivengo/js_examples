@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script type="text/javascript">{
+
+       // создание виртуального канваса для паттерна
+       const canvas1 = document.createElement('canvas'),  ctx = canvas1.getContext('2d');
+       canvas1.setAttribute('width','124'); canvas1.setAttribute('height','124');
+
+       const rect1   = [1, 1, canvas1.width-2, canvas1.height-2], mx = rect1[0]+rect1[2]/2, my = rect1[1]+rect1[3]/2;
+       const rads = x => Math.PI * x / 180;
+       const    𝛂 = 90, 𝛂Grad = rads(𝛂);
+       // создание градиента
+       ctx.lineWidth = 2;
+       ctx.strokeStyle = 'grey';
+       // целостная фигура
+       ctx.translate(mx,my); ctx.rotate(𝛂Grad); ctx.translate(-mx,-my);
+       ctx.rect.apply(ctx,rect1);
+       ctx.strokeStyle = 'blue';
+
+       // рисуем букву Н
+       ctx.moveTo(20,20);
+       ctx.lineTo(20,100);
+       ctx.moveTo(20,60);
+       ctx.lineTo(50,60);
+       ctx.lineTo(50,100);
+       ctx.moveTo(50,60);
+       ctx.lineTo(50,20);
+       //рисуем букву Е
+       ctx.moveTo(70,20);
+       ctx.lineTo(70,100);
+       ctx.lineTo(100,100);
+       ctx.moveTo(70,60);
+       ctx.lineTo(100,60);
+       ctx.moveTo(70,20);
+       ctx.lineTo(100,20);
+       //расставляем точки рядом с инициалами
+       ctx.strokeRect(60, 100, 1,1);
+       ctx.strokeRect(110, 100, 1,1);
+       ctx.stroke();
+       //рисуем кривую безье
+       ctx.beginPath();
+       ctx.moveTo(15,105);
+       ctx.bezierCurveTo(70, 140, 110, 100, 110,105);
+       ctx.strokeStyle ="red"
+
+       ctx.stroke();
+       // создание паттерна по в2иртуальному канвасу
+       const pattern = ctx.createPattern(canvas1, 'repeat');
+
+       // создание реального канваса
+       const canvas2 = document.createElement('canvas'),  ctx2 = canvas2.getContext('2d');
+       canvas2.setAttribute('width','500'); canvas2.setAttribute('height','500');
+       // назначение паттерна стилю заливки
+       ctx2.fillStyle = pattern;
+       ctx2.fillRect(  0,0, canvas2.width, canvas2.height);
+
+       // вставка реального канваса внутрь тела веб-страницы
+       document.body.appendChild(canvas2);
+
+    }
+    </script>
+
+</body>
+</html>

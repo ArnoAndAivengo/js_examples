@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script type="text/javascript">
+
+    function makeCanvas(x, y) {
+        const canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+        canvas.setAttribute('width', x);
+        canvas.setAttribute('height', y);
+        return { canvas, ctx };
+    }
+
+    {
+        const { canvas, ctx } = makeCanvas(130, 130);
+        document.body.appendChild(canvas);
+
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'grey';
+        // целостная фигура
+        const rect1   = [1, 1, canvas.width-2, canvas.height-2];
+        ctx.strokeRect(...rect1);
+        ctx.strokeStyle = 'blue';
+
+        // рисуем букву Н
+        ctx.moveTo(20,20);
+        ctx.lineTo(20,100);
+        ctx.moveTo(20,60);
+        ctx.lineTo(50,60);
+        ctx.lineTo(50,100);
+        ctx.moveTo(50,60);
+        ctx.lineTo(50,20);
+        //рисуем букву Е
+        ctx.moveTo(70,20);
+        ctx.lineTo(70,100);
+        ctx.lineTo(100,100);
+        ctx.moveTo(70,60);
+        ctx.lineTo(100,60);
+        ctx.moveTo(70,20);
+        ctx.lineTo(100,20);
+        //расставляем точки рядом с инициалами
+        ctx.strokeRect(60, 100, 1,1);
+        ctx.strokeRect(110, 100, 1,1);
+        ctx.stroke();
+        //рисуем кривую безье
+        ctx.beginPath();
+        ctx.moveTo(15,105);
+        ctx.bezierCurveTo(70, 140, 110, 100, 110,105);
+        ctx.strokeStyle ="red"
+
+        ctx.stroke();
+
+}
+    </script>
+
+</body>
+</html>
