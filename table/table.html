@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>HTML5 JQuery AJAX</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <script>
+    $(() => {
+      $('h2').on('click', function(){
+        $.ajax({
+          url: 'https://kodaktor.ru/j/rates',
+          data: {},
+          method: 'GET'
+        })
+        .done( result => {
+          let table = JSON.parse(result);
+
+          $.each(table, function(i, item) {
+            var row = $("<tr />")
+            $("#table").append(row);
+            row.append($("<td>" + item.name + "</td>"));
+            row.append($("<td>" + item.buy + "</td>"));
+            row.append($("<td>" + item.sell + "</td>"));
+          });
+        });
+      });
+    });
+  </script>
+  <style>
+    table {
+        border: 2px solid #666;
+        padding: 5px;
+        width: 30%;
+        text-align: left;
+      }
+
+      th {
+        font-weight: bold;
+        padding: 2px;
+        background: gray;
+      }
+      tr:nth-child(odd) {
+        background-color: #dddddd;
+      }
+  </style>
+ </head>
+ <body>
+    <h2>Нажмите на заголовок для получения данных</h2>
+
+   <table id="table">
+    <tr>
+        <th>Валюта</th>
+        <th>Продажа</th>
+        <th>Покупка</th>
+    </tr>
+  </table>
+ </body>
+</html>

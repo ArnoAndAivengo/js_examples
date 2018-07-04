@@ -8,25 +8,25 @@
      <h1>click me</h1>
 
     <div id="list"></div>
-    <script>{
-        document.querySelector('h1').addEventListener('click', async e => {
-            e.target.textContent = 'Отправлено!';
+<script>{
+  document.querySelector('h1').addEventListener('click', async e => {
+    e.target.textContent = 'Отправлено!';
 
-            const URI = 'http://media.dist-learn.spb.ru/j/users/';
+    const URI = 'http://media.dist-learn.spb.ru/j/users/';
 
-            const {users} = await fetch(URI).then(x => x.json());
-            const result = e.target.textContent = 'Результат (Login): ';
+    const {users} = await fetch(URI).then(x => x.json());
+    const result = e.target.textContent = 'Результат (Login): ';
 
-            let div = document.getElementById('list');
-            let ol = document.createElement('ol');
-            div.appendChild(ol);
+    let div = document.getElementById('list');
+    let ol = document.createElement('ol');
+    div.appendChild(ol);
 
-            users.forEach(({login, password})=> {
-                var li = document.createElement('li');
-                li.innerHTML = 'Login - ' + login + ' | Password - ' + password;
-                ol.appendChild(li);
-            });
-        });
-    }</script>
+    users.forEach(({login, password})=> {
+        var li = document.createElement('li');
+        li.innerHTML = 'Login - ' + login + '</br>Password - ' + password;
+        ol.appendChild(li);
+    });
+  });
+}</script>
  </body>
 </html>
