@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HandleBars1</title>
+    <meta charset="utf-8">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<style>
+    table {
+        border: 2px solid #666;
+        padding: 5px;
+        width: 30%;
+        text-align: left;
+    }
+
+    th {
+        font-weight: bold;
+        padding: 2px;
+        background: gray;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #dddddd;
+    }
+</style>
+</head>
+
+<body>
+
+
+    <button id='b'> click me </button>
+
+    <div id='r'></div>
+    <script id='t' type='text/x-handlebars-template'>
+        <table id="table">
+            <tr>
+                <th>Валюта</th>
+                <th>Продажа</th>
+                <th>Покупка</th>
+            </tr>
+            {{#each this}}
+            <tr>
+                <td>{{ this.name }}</td>
+                <td>{{ this.sell }}</td>
+                <td>{{ this.buy }}</td>
+            </tr>
+            {{/each}}
+        </table>
+        </ul>
+    </script>
+    <script>
+        $(() => {
+            $('#b').on('click', () => {
+                let s = what => JSON.stringify(what),
+                    template = Handlebars.compile($("#t").html());
+
+                $.ajax({
+                        url: 'https://kodaktor.ru/j/rates',
+                        method: 'GET'
+                    })
+                    .done(result => {
+                        let table = JSON.parse(result);
+                        $('#r').html(template(table))
+
+                        console.log({
+                            table
+                        });
+                    })
+                    .fail(e => alert(JSON.stringify(e)))
+            });
+        });
+    </script>
+</body>
+
+</html>

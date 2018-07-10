@@ -17,6 +17,7 @@
 - ip.html - Вывод IP адресов. Создание частотной таблицы
 - interest_rate.html - Нахождение процентной ставки
 - form.html - образец табличной формы.
+- HandleBars - образец работы взаимодействия Handlebars и jQuery
 
 
 # Arrays
