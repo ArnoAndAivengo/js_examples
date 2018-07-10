@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+.username{
+	color:#C33;
+}
+</style>
+</head>
+<body>
+<template id="tmplt">
+  <h2></h2>
+  <p></p>
+  <hr>
+</template>
+<script>
+var arr = [
+   { name:'Александр', country:'Москва', age:27 },
+   { name:'Мария', country:'Рязань', age:34 },
+   { name:'Иван', country:'Санкт-Петербург', age:23 },
+   { name:'Михаил', country:'Ростов', age:29 }
+];
+var template = document.querySelector('#tmplt');
+for (var i = 0; i < arr.length; i++) {
+	var user = arr[i];
+	var clone = template.content.cloneNode(true);
+	var h2 = clone.querySelectorAll('h2');
+	h2[0].className = "username";
+	h2[0].innerHTML = user.name;
+	var p = clone.querySelectorAll('p');
+	p[0].innerHTML = "Country: "+user.country+"<br>Age: "+user.age;
+	template.parentNode.appendChild(clone);
+}
+
+</script>
+</body>
+</html>

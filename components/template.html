@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>HTML5</h1>
+  <template id="t">
+    <style>
+      :host {
+        zoom: 123%;
+        display: inline;
+        cursor: pointer;
+        border: solid 1px silver;
+        border-radius: 5px;
+        padding: 5px
+      }
+    </style>&uArr;
+    <span>
+      <slot name="val"></slot>
+    </span>
+  </template>
+  <count-er>
+    <span slot="val">3</span>
+  </count-er>
+  <count-er>
+    <span slot="val">14</span>
+  </count-er>
+  <input type="color">
+  <script>
+    {
+      class Counter extends HTMLElement {
+        constructor() {
+          super();
+          const shadow = this.attachShadow({
+            mode: 'open'
+          });
+          const content = document.importNode(document.querySelector('#t').content, true);
+          this.val = this.querySelector('[slot=val]').textContent;
+          shadow.appendChild(content);
+          this.addEventListener('click', () => {
+            this.val++;
+            this.querySelector('[slot=val]').textContent = this.val;
+          });
+        }
+      }
+      customElements.define('count-er', Counter);
+    }
+  </script>
+</body>
+
+</html>

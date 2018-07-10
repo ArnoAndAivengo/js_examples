@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>HTML5</h1>
+  <template id="angular">
+    <style>
+      :host {
+        zoom: 123%;
+        display: flex;
+        width: 180px;
+        cursor: pointer;
+        border: solid 1px silver;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+      }
+    </style>
+    <span>Angular
+      <slot name="val"></slot>
+    </span>
+  </template>
+
+  <template id="react">
+    <style>
+      :host {
+        zoom: 123%;
+        display: flex;
+        width: 180px;
+        cursor: pointer;
+        border: solid 1px silver;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+      }
+    </style>
+    <span>React
+      <slot name="val_1"></slot>
+    </span>
+  </template>
+
+  <template id="vue">
+    <style>
+      :host {
+        zoom: 123%;
+        display: flex;
+        width: 180px;
+        cursor: pointer;
+        border: solid 1px silver;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+      }
+    </style>
+    <span>Vue
+      <slot name="val_2"></slot>
+    </span>
+  </template>
+
+  <button value="btnAdd">Добавить</button>
+  <button value="btnRemove">Удалить</button>
+  <count-er id="stars">
+  </count-er>
+
+  <button value="btnAdd_1">Добавить</button>
+  <button value="btnRemove_1">Удалить</button>
+  <count-er1 id="stars_1">
+    <span slot="val_1">⭐️</span>
+    <span slot="val_1">⭐</span>
+    <span slot="val_1">⭐</span>
+  </count-er1>
+
+  <button value="btnAdd_2">Добавить</button>
+  <button value="btnRemove_2">Удалить</button>
+  <count-er2 id="stars_2">
+    <span slot="val_2">⭐️</span>
+    <span slot="val_2">⭐️</span>
+  </count-er2>
+
+  <script>
+    {
+
+      class Counter extends HTMLElement {
+        constructor() {
+          super();
+          const shadow = this.attachShadow({
+            mode: 'open'
+          });
+          const content = document.importNode(document.querySelector('#angular').content, true);
+
+          shadow.appendChild(content);
+
+          const f = () => {
+            let stars = document.getElementById("stars");
+            if (stars.childElementCount < 5) {
+
+              var node = document.createElement('SPAN');
+              node.setAttribute('slot', 'val');
+              var textnode = document.createTextNode("⭐");
+              node.appendChild(textnode);
+              document.getElementById("stars").appendChild(node);
+            }
+          };
+          const j = () => {
+            let val = '';
+            document.querySelector('[slot=val]').outerHTML = val;
+          };
+          document.querySelector('[value=btnAdd]').addEventListener('click', f);
+          document.querySelector('[value=btnRemove]').addEventListener('click', j);
+        }
+      }
+      customElements.define('count-er', Counter);
+
+
+
+      class Counter_1 extends HTMLElement {
+        constructor() {
+          super();
+          const shadow = this.attachShadow({
+            mode: 'open'
+          });
+          const content = document.importNode(document.querySelector('#react').content, true);
+
+          shadow.appendChild(content);
+
+          const f = () => {
+            let stars = document.getElementById("stars_1");
+            if (stars.childElementCount < 5) {
+
+              var node = document.createElement('SPAN');
+              node.setAttribute('slot', 'val_1');
+              var textnode = document.createTextNode("⭐");
+              node.appendChild(textnode);
+              document.getElementById("stars_1").appendChild(node);
+            }
+          };
+          const j = () => {
+            let val = '';
+            document.querySelector('[slot=val_1]').outerHTML = val;
+          };
+          document.querySelector('[value=btnAdd_1]').addEventListener('click', f);
+          document.querySelector('[value=btnRemove_1]').addEventListener('click', j);
+        }
+      }
+      customElements.define('count-er1', Counter_1);
+
+      class Counter_2 extends HTMLElement {
+        constructor() {
+          super();
+          const shadow = this.attachShadow({
+            mode: 'open'
+          });
+          const content = document.importNode(document.querySelector('#vue').content, true);
+
+          shadow.appendChild(content);
+
+          const f = () => {
+            let stars = document.getElementById("stars_2");
+            if (stars.childElementCount < 5) {
+
+              var node = document.createElement('SPAN');
+              node.setAttribute('slot', 'val_2');
+              var textnode = document.createTextNode("⭐");
+              node.appendChild(textnode);
+              document.getElementById("stars_2").appendChild(node);
+            }
+          };
+          const j = () => {
+            let val = '';
+            document.querySelector('[slot=val_2]').outerHTML = val;
+          };
+          document.querySelector('[value=btnAdd_2]').addEventListener('click', f);
+          document.querySelector('[value=btnRemove_2]').addEventListener('click', j);
+        }
+      }
+      customElements.define('count-er2', Counter_2);
+
+
+    }
+  </script>
+</body>
+
+</html>
