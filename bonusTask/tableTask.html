@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>HTML5 JQuery AJAX</title>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <script>
+    $(() => {
+        $.ajax({
+          url: 'https://kodaktor.ru/j/ips',
+          data: {},
+          method: 'GET'
+        })
+        .done( result => {
+          let table = JSON.parse(result);
+          // Сортировка массива
+          table.sort(function(a, b) {
+
+              return a.ip < b.ip ? 1 : -1;
+          });
+
+          // Преоброзования в массив из объекта
+            let resultS = Object.keys(table).reduce(function(object, cur) {
+                object[cur] = table[cur].ip;
+                return object;
+            }, {});
+
+
+
+            $.each(resultS, function(i, item) {
+
+                console.log(item);
+              var row = $("<tr />");
+              $("#table").append(row);
+              row.append($("<td>" + this + "</td>"));
+              row.append($("<td>" + this + "</td>"));
+            });
+        });
+    });
+  </script>
+  <style>
+    table {
+        border: 2px solid #666;
+        padding: 5px;
+        width: 30%;
+        text-align: left;
+      }
+
+      th {
+        font-weight: bold;
+        padding: 2px;
+        background: gray;
+      }
+      tr:nth-child(odd) {
+        background-color: #dddddd;
+      }
+  </style>
+ </head>
+ <body>
+
+   <table id="table">
+    <tr>
+        <th>IP</th>
+        <th>Частота посещения</th>
+    </tr>
+  </table>
+
+   <p>(а) сколько всего различных адресов присутствует массиве</p>
+   <p>(б) со скольких адресов сайт посещался по одному разу</p>
+   <p>(в) какова максимальная частота посещения</p>
+
+ </body>
+</html>
