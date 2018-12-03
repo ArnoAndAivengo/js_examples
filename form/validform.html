@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/sleep">
+    <input pattern="[0-9]{2}" name="n">
+    <input type="submit" />
+</form>
+
+<form action="/sleep">
+    <input placeholder="число от 0 до 19" require pattern="1?[0-9]" name="n" />
+    <button onclick="this.form.checkValidity()">Проверить / попробовать отправить</button>
+</form>
+
+</body>
+</html>

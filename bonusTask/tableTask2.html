@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  <head>
-  <title>ips</title>
+  <title>HTML5 JQuery AJAX</title>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -16,7 +16,6 @@
         })
         .done( result => {
           let table = JSON.parse(result);
-
           // Сортировка массива
           table.sort(function(a, b) {
               return a.ip < b.ip ? 1 : -1;
@@ -28,32 +27,32 @@
                 return object;
             }, {});
 
-            // Поиск уникальных значений
-            let uniq = objectToArray(resultS)
-                .map((name) => { return {name: name, count: 1}; })
-                .reduce((a, b) => { a[b.name] = b.count + (a[b.name] || 0); return  a}, {});
 
-            // Сортировка по возростанию
-            let sortable = [];
-            for (let vehicle in uniq) {
-                sortable.push([vehicle, uniq[vehicle]]);
-            }
-            let uniq2 = sortable.sort(function(a, b) {
-                return b[1] - a[1];
-            });
+            var uniq = objectToArray(resultS)
+                .map((name) => {
+                    return {count: 1, name: name};
+                })
+                .reduce((a, b) => {
+                        a[b.name] = (a[b.name] || 0) + b.count;
+                    // console.log(a);
+                    return a
+                }, {});
 
-            // Вывод таблицы
-            $.each(uniq2, function(i, item) {
-                console.log(item );
+            // var duplicates = Object.keys(uniq).filter((a) => uniq[a] > 1);
+
+            console.log(uniq);
+            
+
+            $.each(uniq, function(i, item) {
+                // console.log(item)
               var row = $("<tr />");
               $("#table").append(row);
-              row.append($("<td>" + item[0] + "</td>"));
-              row.append($("<td>" + item[1] + "</td>"));
+              row.append($("<td>" + i + "</td>"));
+              row.append($("<td>" + item + "</td>"));
             });
         });
     });
 
-    // Преоброзования в массив из объекта
     var objectToArray = function(obj) {
         var arr =[];
         for(let o in obj) {
@@ -63,7 +62,6 @@
         }
         return arr;
     };
-
   </script>
   <style>
     table {
@@ -81,9 +79,6 @@
       tr:nth-child(odd) {
         background-color: #dddddd;
       }
-      td {
-          text-align: center;
-      }
   </style>
  </head>
  <body>
@@ -95,9 +90,9 @@
     </tr>
   </table>
 
-   <p>(а) сколько всего различных адресов присутствует массиве 65</p>
-   <p>(б) со скольких адресов сайт посещался по одному разу 43</p>
-   <p>(в) какова максимальная частота посещения 12</p>
+   <p>(а) сколько всего различных адресов присутствует массиве</p>
+   <p>(б) со скольких адресов сайт посещался по одному разу</p>
+   <p>(в) какова максимальная частота посещения</p>
 
  </body>
 </html>
