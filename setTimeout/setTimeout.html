@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>{
+
+    let timerId = setTimeout(sayHello, 3000);
+    // clearTimeout(timerId);
+
+    let timerId = setInterval(sayHello, 3000);
+    clearTimeout(timerId);
+
+    function sayHello() {
+        console.log('Hello world');
+    }
+
+    let timerId = setTimeout(function log() {
+        console.log("hi");
+        setTimeout(log, 2000);
+    });
+
+
+    // Animation box
+    let btn = document.querySelector('.btn'),
+        elme = document.querySelector('.box');
+
+    function myAnimation() {
+        let pos = 0,
+            id = setInterval(frame, 10);
+
+        function frame() {
+            if (pos == 300) {
+                clearInterval();
+            } else {
+                pos++;
+                elem.style.top = pos + 'px';
+                elem.style.left = pos + 'px';
+
+            }
+        }
+    }
+
+    btn.addEventListener('click', myAnimation);
+
+
+    // делегирование события
+    let btnBlock = document.querySelector('.btn-block'),
+        btns = document.getElementsByName('button');
+
+    btnBlock.addEventListener('click', function(event) {
+        if (event.target && event.target.matches('button.first')) {
+
+        }
+    })
+
+}</script>
+
+</body>
+</html>
