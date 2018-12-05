@@ -15,16 +15,27 @@
             const URI = 'https://kodaktor.ru/j/ips';
 
             const users = await fetch(URI).then(x => x.json());
-            console.log(users);
+
             const result = e.target.textContent = 'Результат (Login): ';
 
             let div = document.getElementById('list');
             let ol = document.createElement('ol');
             div.appendChild(ol);
 
-            users.forEach(({ip})=> {
-                var li = document.createElement('li');
-                li.innerHTML = 'IP - ' + ip;
+            // Сортировка по возростанию
+            let sortable = [];
+            for (let key in users) {
+                sortable.push([users[key]]);
+            }
+            console.log(sortable);
+            let users2 = sortable.sort(function(a, b) {
+                return b[0].ip - a[0].ip;
+            });
+
+
+            users2.forEach(function(item) {
+                let li = document.createElement('li');
+                li.innerHTML = 'IP - ' + item.ip;
                 ol.appendChild(li);
             });
         });

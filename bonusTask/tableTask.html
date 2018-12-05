@@ -8,15 +8,11 @@
      <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <script>
-    $(() => {
-        $.ajax({
-          url: 'https://kodaktor.ru/j/ips',
-          data: {},
-          method: 'GET'
-        })
-        .done( result => {
-          let table = JSON.parse(result);
+    $( async e => {
 
+        const URI = 'https://kodaktor.ru/j/ips';
+        const table = await fetch(URI).then(x => x.json());
+        console.log(Object.keys(table.ip));
           // Сортировка массива
           table.sort(function(a, b) {
               return a.ip < b.ip ? 1 : -1;
@@ -44,13 +40,11 @@
 
             // Вывод таблицы
             $.each(uniq2, function(i, item) {
-                console.log(item );
               var row = $("<tr />");
               $("#table").append(row);
               row.append($("<td>" + item[0] + "</td>"));
               row.append($("<td>" + item[1] + "</td>"));
             });
-        });
     });
 
     // Преоброзования в массив из объекта

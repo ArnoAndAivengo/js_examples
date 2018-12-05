@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ips</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+        $( async e => {
+
+            const URI = 'https://kodaktor.ru/cart_data.json';
+            const table = await fetch(URI).then(x => x.json());
+            console.log(table);
+
+
+            // Вывод таблицы
+            $.each(table, function(i, item) {
+                var row = $("<tr />");
+                $("#table").append(row);
+                row.append($("<td class='hi'>" + i  + "</td>"));
+                row.append($("<td>" + item + "</td>"));
+            });
+        });
+
+
+    </script>
+    <style>
+        table {
+            border: 2px solid #666;
+            padding: 5px;
+            width: 30%;
+            text-align: left;
+        }
+
+        th {
+            font-weight: bold;
+            padding: 2px;
+            background: gray;
+        }
+        tr:nth-child(odd) {
+            background-color: #dddddd;
+        }
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<table id="table">
+    <tr>
+        <th>IP</th>
+        <th>Частота посещения</th>
+    </tr>
+</table>
+
+</body>
+</html>
