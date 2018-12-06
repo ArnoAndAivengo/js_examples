@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>{
+    // btn.addEventListener('click', function () {
+    //     console.log('Hello');
+    // })
+
+    function shoot(arrow, headshot, fail) {
+        console.log('Вы сделали выстрел...');
+
+        setTimeout(function () {
+          Math.random() > .5 ? headshot({}) : fail("Вы промахнулись");
+        }, 3000)
+    };
+
+    function win() {
+        console.log('Вы победили!');
+    }
+
+    function loose() {
+        console.log('Вы проиграли!');
+
+    }
+
+    shoot({},
+        function (mark) {
+            console.log('Вы попали в цель!');
+            win();
+        },
+        function(miss) {
+            console.error(miss);
+            loose();
+        }
+    )
+
+
+}</script>
+</body>
+</html>

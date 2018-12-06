@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>{
+    class Rectangle {
+        constructor(height, width) {
+            this.height = height;
+            this.width = width;
+        }
+        calcArea() {
+            return this.height * this.width;
+        }
+    }
+
+    const square = new Rectangle(10, 10);
+
+    console.log(square.calcArea());
+}</script>
+</body>
+</html>
