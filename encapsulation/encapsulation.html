@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>{
+    function User (name, age) {
+        this.name = name;
+        let userAge = age;
+
+        this.getAge = function () {
+          return userAge;
+        };
+
+        this.setAge = function (age) {
+           if (typeof age === 'number' && age > 0 && age < 110) {
+               userAge = age;
+           } else {
+               console.log('Недопустима операция');
+           }
+        };
+
+        this.say = function () {
+            console.log(`Имя пользователя: ${this.name}, возраст ${this.userAge}`);
+        }
+    }
+
+    let user = new User('Ivan', 25);
+    console.log(user.name);
+    console.log(user.userAge);
+    user.say();
+    console.log(user.getAge());
+    user.setAge('20');
+    console.log(user.getAge());
+
+
+    let user1 = (function() {
+        let privat = function () {
+            console.log('I\'am private');
+        };
+        let sayHelllo = function () {
+            console.log('Hello!');
+        };
+        return {
+          sayHello:sayHello
+        };
+    }());
+
+    console.log(user);
+    console.log(user.sayHello());
+
+
+
+}</script>
+</body>
+</html>

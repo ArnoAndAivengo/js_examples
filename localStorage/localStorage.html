@@ -2,9 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>{
+    localStorage.setItem("number", 1);
+
+    console.log(localStorage.getItem("number"));
+
+    localStorage.removeItem("number");
+
+    localStorage.clear();
+
+    window.addEventListener("DOMContentLoaded", function() {
+       let checkBox = document.getElementById('rememberMe'),
+           change = document.getElementById('change'),
+           form = document.getElementsByTagName('form')[0];
+
+       if (localStorage.getItem('isCheсked') === "true") {
+           checkBox.checked = true;
+       }
+
+       if (localStorage.getItem("bg") === "changed") {
+           form.style.backgroundColor = "#FF4766";
+       }
+
+       checkBox.addEventListener('click', function() {
+           localStorage.setItem("isChecked", true);
+       })
+
+        change.addEventListener('click', function () {
+            localStorage.setItem('bg', 'changed');
+            form.style.backgroundColor = "#FF4766";
+        })
+
+        let persone = {
+           name: "Alex",
+            age: 20,
+            tech: ["mobile", "notebook"]
+        };
+
+        let serializedPersone = JSON.stringify(persone);
+       localStorage.setItem("Alex", serializedPersone);
+
+       console.log(JSON.parse(localStorage.getItem("Alex")));
+    });
+
+
+}</script>
 </body>
 </html>

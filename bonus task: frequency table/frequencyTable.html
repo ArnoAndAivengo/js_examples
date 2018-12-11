@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 JQuery AJAX</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+        $(() => {
+            $.ajax({
+                url: 'https://kodaktor.ru/j/ips',
+                data: {},
+                method: 'GET'
+            })
+                .done( result => {
+                    let table = JSON.parse(result);
+
+                    let tableUnique = unique(table);
+                    tableUnique.sort(function(a, b) {
+                        let arr = [];
+                        if ( a.ip === b.ip) {
+                            arr = a.ip;
+                            arr = arr.push(b);
+
+                            console.log(arr.ip);
+                            // $.each(arr, function(i, item) {
+                            //     if ( item === item) {
+                            //         arr = item;
+                            //
+                            //     }
+
+                            //
+                            // });
+
+                        }
+
+
+                    });
+                    console.log(tableUnique);
+
+
+                    let tableSort = Array.from(new Set(table.map(JSON.stringify))).map(JSON.parse);
+                     console.log(table);
+
+
+
+                    // table.sort(function(a, b) {
+                    //     return a.ip < b.ip ? 1 : -1;
+                    // });
+
+                    // console.log(tableSort);
+
+
+                    $.each(tableSort, function(i, item) {
+
+
+                        var row = $("<tr />");
+                        $("#table").append(row);
+                        row.append($("<td>" + item.ip + "</td>"));
+                        row.append($("<td>" + item.ip+ "</td>"));
+                });
+            });
+        });
+
+
+        function unique(arr) {
+                let temp = {};
+                temp = arr.filter(a => temp[a.ip] || !(temp[a.ip] = !0));
+            return temp;
+        }
+    </script>
+    <style>
+        table {
+            border: 2px solid #666;
+            padding: 5px;
+            width: 30%;
+            text-align: left;
+        }
+
+        th {
+            font-weight: bold;
+            padding: 2px;
+            background: gray;
+        }
+        tr:nth-child(odd) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+<h2>Нажмите на заголовок для получения данных</h2>
+
+<table id="table">
+    <tr>
+        <th>IP</th>
+        <th>Частота посещения</th>
+    </tr>
+</table>
+</body>
+</html>
