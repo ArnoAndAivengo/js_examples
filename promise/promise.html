@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello</h1>
+    <script>{
+        const p = new Promise((res, rej) => res(33));
+        void p.then(x => conssole.log(x));
+
+        const age = num => new Promise((res, rej) => num < 18 ? rej('Запрещено!') : res('Уже можно!'));
+
+        void age(19).then(x => console.log(x)).catch(x => console.log(x));
+
+        // императивный вызов
+        const num = 6.9;
+        const intNum = x => parseInt(x); // округление в меньшее
+        console.log(intNum(num));
+
+
+        const sayHello = (f = x => x, name = 'Elias') => `Hello, ${f(name)}!`;
+        console.log(sayHello()); // Hello, Elias!
+        console.log(sayHello(x => x.toUpperCase())); // Hello, ELIAS!
+
+        
+    }</script>
+    
+</body>
+</html>

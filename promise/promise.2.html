@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Промисификация - async/await</title>
+</head>
+<body>
+    <h1>Hello</h1>
+    <script>{ console.clear();
+        const prTimer = sec => new Promise((res => setTimeout(res, sec * 1000));
+        (async () => {
+            await prTimer(4);
+            Out.log('Прошло 4 секунды!');
+            await prTimer(8);
+            Out.log('Прошло 8 секунды!');
+        })();
+        
+    }</script>
+    
+</body>
+</html>
