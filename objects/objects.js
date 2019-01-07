@@ -21,3 +21,12 @@ for (let key in options) {
 }
 
 console.log(Object.keys(options).length);
+
+
+let obj = {
+  name: "Rock",
+  age: 23,
+  born: "Moscow",
+}
+
+console.log({obj.name});
