@@ -26,3 +26,12 @@ console.log({ i }, typeof i);
 console.log({ s }, typeof (s) + i);
 console.log({ b }, typeof b);
 console.log({ f }, typeof f);
+
+/* 
+    type of тип переменной
+    идентификатор
+    instanceof
+    undefuned = неопределенное значение скалярное number, string, boolean
+    null = неопределенное значение ссылочное object, array, if, function
+    NaN = у NaN тип Number  деление на 0, undeined + 1 = NaN
+*/
