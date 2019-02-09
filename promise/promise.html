@@ -10,7 +10,7 @@
     <h1>Hello</h1>
     <script>{
         const p = new Promise((res, rej) => res(33));
-        void p.then(x => conssole.log(x));
+        void p.then(x => console.log(x));
 
         const age = num => new Promise((res, rej) => num < 18 ? rej('Запрещено!') : res('Уже можно!'));
 
