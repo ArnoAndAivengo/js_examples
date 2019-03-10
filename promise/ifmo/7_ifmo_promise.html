@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
 
 
 </head>
+
 <body>
 
     <!--<input type="text" id="start" name="start">-->
@@ -15,15 +17,15 @@
 
     <!--<div></div>-->
     <script>
-
         console.log(fetch.apply())
 
         async function uri() {
 
-            return await fetch('https://kodaktor.ru/j/numtwo',
-                {
+            return await fetch('https://kodaktor.ru/j/numtwo', {
                     method: 'GET',
-                    headers:{'content-type': 'application/json'},
+                    headers: {
+                        'content-type': 'application/json'
+                    },
                     mode: 'no-cors'
                 })
                 .then(x => x.text())
@@ -43,9 +45,7 @@
         //         .then(x => x.text())
         //         .then(x => div.innerHTML = x)
         // }
-
-
-
     </script>
 </body>
+
 </html>
