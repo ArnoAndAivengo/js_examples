@@ -11,41 +11,35 @@
 </head>
 
 <body>
+<script>
 
-    <!--<input type="text" id="start" name="start">-->
-    <!--<input onclick="uri()" type="submit" value="Go">-->
 
-    <!--<div></div>-->
-    <script>
-        console.log(fetch.apply())
+    async function uri() {
 
-        async function uri() {
+        await fetch('https://kodaktor.ru/j/numtwo', {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json'
+            },
+            mode: 'no-cors'
+        })
+            .then(x => x.text())
+            .then(x => uri2(x))
+    }
 
-            return await fetch('https://kodaktor.ru/j/numtwo', {
-                    method: 'GET',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    mode: 'no-cors'
-                })
-                .then(x => x.text())
-                .then(x => console.log(x))
-                // .then(x => uri2())
-        }
+    async function uri2(d) {
 
-        uri()
+        await fetch('https://kodaktor.ru/j/users')
+            .then(x => x.json())
+            .then(x = ({users: x}) => x)
+            .then(x = ({[d]: x}) => x)
+            .then(x = ({login: x}) => x)
+            .then(x => console.log(x));
+    }
 
-        // async function uri2() {
-        //     var div = document.querySelector('div'),
-        //         span = document.querySelector('span').textContent;
-        //
-        //     return await fetch('https://kodaktor.ru/api/rp/' + span, {
-        //         method: 'GET',
-        //     })
-        //         .then(x => x.text())
-        //         .then(x => div.innerHTML = x)
-        // }
-    </script>
+    uri()
+
+</script>
 </body>
 
 </html>
