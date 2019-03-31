@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+</head>
+<body>
+    <script>
+    // const fs = require('fs');
+    // fs.readFile('./package.js').then(contents => console.log(contents))
+    //     .catch(err => console.error(err))
+    // const {readFile: r} = require('fs');
+    // r('./package.json', (e, x) => {
+    //     if (e) return console.table(e);
+    //     console.log(String(x));
+    // }).catch(err => console.error(err));
+
+    const fs = require('fs');
+        fs.readFile('./package.js').then(items,index => console.log(items))
+    .catch(err => console.error(err));      
+    </script>
+</body>
+</html> 
