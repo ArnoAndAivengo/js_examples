@@ -1,18 +1,11 @@
 function strCount(str, char) {
-    const StrToString = str.toString()
-    const StrtoLowerCase = StrToString.toLowerCase()
-    const StrSlice = StrtoLowerCase.split('')
 
-    let arr= []
+    const strToString = str.toString()
+    const strToLowerCase = strToString.toLowerCase()
+    const strSlice = strToLowerCase.split('')
+    const strFilter = strSlice.filter(val => val === char)
 
-    for (let i = 0; i < StrSlice.length; i++) {
-        if (StrSlice[i] === char) {
-            arr.push(StrSlice[i])
-        }
-    }
-
-    return arr.length
+    return strFilter.length
 }
 
-
-console.log(strCount('HELllllolll', 'l'))
+console.log(strCount('HELlolll', 'l'))
