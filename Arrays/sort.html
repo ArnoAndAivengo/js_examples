@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <script type="text/javascript">
+
+        // Сортировка по значению max, min
+
+        $(() => {
+            $.ajax({
+                url: 'https://kodaktor.ru/j/ips',
+                data: {},
+                method: 'GET'
+            })
+                .done( result => {
+                let table = JSON.parse(result);
+
+                table.sort(function(a, b) {
+                    return a.ip < b.ip ? 1 : -1;
+                });
+                    console.log(table);
+            });
+        });
+
+        var items = [
+            { name: 'Edward', value: 21 },
+            { name: 'Sharpe', value: 37 },
+            { name: 'And', value: 45 },
+            { name: 'The', value: -12 },
+            { name: 'Magnetic' },
+            { name: 'Zeros', value: 37 }
+        ];
+        items.sort(function (a, b) {
+            if (a.value < b.value) {
+                return 1;
+            }
+            if (a.value < b.value) {
+                return -1;
+            }
+            return 0;
+        });
+        console.log(items);
+
+
+        function compareNumbers(a, b) {
+            return a.value == b.value;
+        }
+
+        console.log('Сортировка с функцией compareNumbers:', items.sort(compareNumbers));
+
+
+    </script>
+
+</body>
+</html>

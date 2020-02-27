@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>h1 {cursor: pointer}</style>
+</head>
+<body>
+    <h1>click me</h1>
+    <div id="list"></div>
+
+    <script>{
+            document.querySelector('h1')
+                .addEventListener('click', async e => {
+                e.target.textContent = 'Отправлено!';
+
+                const URI = 'https://kodaktor.ru/api/usermails';
+                const x = await fetch(URI).then(x => x.json());
+                const result = e.target.textContent = 'Результат (Login): ';
+
+                let div = document.getElementById('list');
+                let ol = document.createElement('ol');
+                div.appendChild(ol);
+
+                const dataSort = x.sort((x, y) => y.length - x.length);
+
+                dataSort.forEach(function(element) {
+                    var li = document.createElement('li');
+                    li.innerHTML = 'Login - ' + element;
+                    ol.appendChild(li);
+                });
+            });
+    }</script>
+
+</body>
+</html>

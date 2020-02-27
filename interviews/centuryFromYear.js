@@ -30,6 +30,6 @@ function centuryFromYear(year) {
 
 console.log(centuryFromYear(0))
 console.log(centuryFromYear(11))
-console.log(centuryFromYear(101))
+console.log(centuryFromYear(1401))
 console.log(centuryFromYear(1600))
-console.log(centuryFromYear(2001))
+console.log(centuryFromYear(1900))

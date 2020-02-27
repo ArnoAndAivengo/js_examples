@@ -1,5 +1,3 @@
-'use strict';
-
 const fn = a => {
     const b = 'Closure variable';
     return c => {
@@ -15,3 +13,14 @@ f2('Parameter Y');
 
 const f3 = fn('Parameter Z');
 f3('Parameter D');
+
+
+
+function getFullName(firstName, lastName) {
+    return function() {
+        return `${firstName} ${lastName}`;
+    };
+}
+
+const getName = getFullName('Mile', 'Oblomov');
+console.log(getName())
