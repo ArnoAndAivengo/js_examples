@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+  <script>
+    function User(firstName, lastName) {
+
+      this.getFullName = () => {
+        firstName + ' ' + lastName;
+      }
+    };
+
+    function Manager(firstName, lastName) {
+      console.log(arguments)
+      User.apply(this, arguments);
+
+      this.sayHello = () => {
+        console.log('Hello, world!')
+      }
+    };
+
+    let u = new User('Nataka', 'Utka');
+    let m = new Manager('Sasaka', 'Lalaka');
+  </script>
+
+</body>
+
+</html>

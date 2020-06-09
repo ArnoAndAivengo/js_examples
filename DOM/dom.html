@@ -5,43 +5,56 @@
     <title>Title</title>
 </head>
 <body>
-<script>{
-    let box = document.getElementById('box'),
-        btn = document.getElementsByTagName('button'),
-        circle = document.getElementsByClassName('circle'),
-        heart = document.querySelectorAll('.wrapper .heart'),
-        oneHeart = document.querySelector('.heart'),
-        wrapper = document.querySelector('wrapper');
 
-        box.style.backgroundColor = 'yellow';
-        btn[1].style.borderRadius = '100%';
-        circle[0].style.backgroundColor = 'red';
+<div data-myattr="myCustom value">
+    <div class="wrapper">
+        <div class="circle"></div>
+        <div class="heart"></div>
+        <button></button>
+        <button></button>
+    </div>
+</div>
 
-        for (let i = 0; i < heart.length; i++) {
-            heart[i].style.backgroundColor = 'blue';
-        }
+<h1>Hello</h1>
 
-        heart.forEach(function(item, i, hearts) {
-            item.style.backgroundColor = 'blue';
-        });
+<script src="index.js"></script>
+<!--<script>{-->
+<!--    let box = document.getElementById('box'),-->
+<!--        btn = document.getElementsByTagName('button'),-->
+<!--        circle = document.getElementsByClassName('circle'),-->
+<!--        heart = document.querySelectorAll('.wrapper .heart'),-->
+<!--        oneHeart = document.querySelector('.heart'),-->
+<!--        wrapper = document.querySelector('wrapper');-->
 
-        let div = document.createElement('div'),
-            text = document.createTextNode('Тут был я');
+<!--        box.style.backgroundColor = 'yellow';-->
+<!--        btn[1].style.borderRadius = '100%';-->
+<!--        circle[0].style.backgroundColor = 'red';-->
 
-        div.classList.add('black');
+<!--        for (let i = 0; i < heart.length; i++) {-->
+<!--            heart[i].style.backgroundColor = 'blue';-->
+<!--        }-->
 
-        document.body.appendChild(div);
+<!--        heart.forEach(function(item, i, hearts) {-->
+<!--            item.style.backgroundColor = 'blue';-->
+<!--        });-->
 
-        wrapper.appendChild(div);
+<!--        let div = document.createElement('div'),-->
+<!--            text = document.createTextNode('Тут был я');-->
 
-        div.innerHTML = '<h1>Hello World!</h1>';
-        div.textContent = '<h1>Hello World!</h1>';
+<!--        div.classList.add('black');-->
 
-        document.body.insertBefore(div, circle[0]);
-        document.body.removeChild(circle[1]);
-        wrapper.removeChild(heart[1]);
-        document.body.replaceChild(btn[1], circle[1]);
-}</script>
+<!--        document.body.appendChild(div);-->
+
+<!--        wrapper.appendChild(div);-->
+
+<!--        div.innerHTML = '<h1>Hello World!</h1>';-->
+<!--        div.textContent = '<h1>Hello World!</h1>';-->
+
+<!--        document.body.insertBefore(div, circle[0]);-->
+<!--        document.body.removeChild(circle[1]);-->
+<!--        wrapper.removeChild(heart[1]);-->
+<!--        document.body.replaceChild(btn[1], circle[1]);-->
+<!--}</script>-->
 
 </body>
 </html>
